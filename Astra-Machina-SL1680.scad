@@ -42,6 +42,13 @@ antenna_pocket_length = 52;
 antenna_pocket_width = 12;
 antenna_pocket_depth = 3.5;
 
+/* [Anschlussöffnungen] */
+// Höhe der oberen Kante, gemessen von der Unterseite des Gehäuses.
+front_otg_top = 19.5;
+front_usb_ethernet_top = 29.5;
+front_hdmi_power_top = 21.5;
+rear_sd_top = 25;
+
 /* [Hidden] */
 $fn = 36;
 eps = 0.02;
@@ -103,11 +110,29 @@ module opening(x0, y0, z0, x1, y1, z1) {
     translate([x0, y0, z0]) cube([x1 - x0, y1 - y0, z1 - z0]);
 }
 
+module front_port_opening() {
+    // Flache Enden für USB-C und HDMI. Im mittleren Bereich bleiben
+    // RJ45 und beide USB-A-Doppelbuchsen frei.
+    front_port_bottom = 5.2;
+    tall_start = 11;
+    tall_end = board_width - 30.5;
+    transition = 2;
+    translate([0, y_max + eps, 0]) rotate([90, 0, 0])
+        linear_extrude(y_max - board_depth + 0.2 + eps)
+            polygon([[-2, front_port_bottom],
+                     [board_width + 2, front_port_bottom],
+                     [board_width + 2, front_hdmi_power_top],
+                     [tall_end + transition, front_hdmi_power_top],
+                     [tall_end, front_usb_ethernet_top],
+                     [tall_start, front_usb_ethernet_top],
+                     [tall_start - transition, front_otg_top],
+                     [-2, front_otg_top]]);
+}
+
 module port_openings() {
-    // Breite Öffnung für USB-C, RJ45, 4 × USB-A, HDMI und USB-C-Strom.
-    opening(-2, board_depth - 0.2, 5.2, board_width + 2, y_max + eps, 32);
+    front_port_opening();
     // Hinten: microSD und Platz zum Greifen unter das Core-Modul.
-    opening(13, y_min - eps, 8.2, board_width - 13, 0.2, 29);
+    opening(13, y_min - eps, 8.2, board_width - 13, 0.2, rear_sd_top);
     // Rechts: Micro-HDMI-Eingang, MIPI-CSI und Zugang zu den Tastern.
     opening(board_width - 0.2, 3.0, 8.2, x_max + eps, board_depth - 12.5, 30);
 }
@@ -229,7 +254,8 @@ module fit_template() {
 if (part == "base" || part == "base_antenna")
     translate([-x_min, -y_min, 0]) base(with_antennas = part == "base_antenna");
 else if (part == "lid" || part == "lid_gpio")
-    translate([-x_min, -y_min, lid_top]) mirror([0, 0, 1]) lid(gpio_open = part == "lid_gpio");
+    // Drehung um die Längsachse, wie beim Aufsetzen des gedruckten Deckels.
+    translate([x_max, -y_min, lid_top]) rotate([0, 180, 0]) lid(gpio_open = part == "lid_gpio");
 else if (part == "fit")
     fit_template();
 else if (part == "assembly") {

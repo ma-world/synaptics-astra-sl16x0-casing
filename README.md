@@ -18,6 +18,7 @@ The mounting hole pattern was checked on an SL1680 kit with the supplied templat
 | Clearance from the top of the I/O board to the underside of the lid | 27.8 mm |
 | Each internal antenna pocket | 52 × 12 × 3.5 mm |
 | GPIO lid opening | 58 × 12 mm |
+| Rear microSD opening | 74 × 16.8 mm |
 
 ## Print files
 
@@ -29,9 +30,9 @@ The mounting hole pattern was checked on an SL1680 kit with the supplied templat
 | [Standard lid](Deckel.stl) | Ventilated lid with four mounting holes. |
 | [Lid with GPIO access](Deckel-GPIO-12mm.stl) | Same mounting pattern with an opening over the 40-pin GPIO header (J32). |
 
-Print the template first. Then print one base and one lid in the supplied STL orientation. **PETG, 0.2 mm layers, and three wall loops** are a starting point. The parts are designed to print without supports. The lid's outer face sits on the build plate.
+Print the template first. Then print one base and one lid in the supplied STL orientation. **PETG, 0.2 mm layers, and three wall loops** are a starting point. The parts are designed to print without supports. The lid's outer face sits on the build plate. Turn the lid over for assembly with the wide I/O edge facing the carrier's main port row.
 
-Use a base and lid from this revision. The wider case gives each screw post 0.5 mm of clearance to the adjacent lid wall, with no cutouts required at the posts. The carrier uses the same 92 × 58 mm mounting pattern, so the supplied template also applies to this revision.
+Use a base and lid for the 119.2 mm wide enclosure. The wider case gives each screw post 0.5 mm of clearance to the adjacent lid wall. An already printed base of this width can be reused with either updated lid. The carrier uses the same 92 × 58 mm mounting pattern, so the supplied template also applies to this revision.
 
 ## Assembly
 
@@ -40,7 +41,7 @@ Use a base and lid from this revision. The wider case gives each screw post 0.5 
 3. Fasten the I/O board with **four M2.5 × 6 mm screws** and the lid with **four M3 × 8 mm screws**. The screws thread directly into the printed pilot holes.
 4. For the GPIO lid, feed the cable through the opening and plug it in before tightening the lid if the connector is difficult to reach. The pins sit below the lid surface.
 
-The large opening at the I/O edge accommodates USB, Ethernet, HDMI, and power plugs. Side and rear openings provide access to features such as Micro-HDMI, microSD, and buttons where present on the kit. Wi-Fi reception with the antennas mounted in the internal pockets has yet to be checked on the kit.
+The front opening follows the connector heights. Its upper edge is lower over USB-C and HDMI, with a taller section for Ethernet and the stacked USB-A ports. Side and rear openings provide access to features such as Micro-HDMI, microSD, and buttons where present on the kit. Check clearance for oversized plug housings. Wi-Fi reception with the antennas mounted in the internal pockets has yet to be checked on the kit.
 
 [Printable instructions in English](Printing-Instructions-EN.txt) · [Printable instructions in German](Druckhinweise.txt)
 
@@ -56,7 +57,7 @@ The large opening at the I/O edge accommodates USB, Ethernet, HDMI, and power pl
 
 ## Edit the design
 
-Open the [OpenSCAD source](Astra-Machina-SL1680.scad) and choose a part in the Customizer. The source includes settings for the board and case dimensions, screw pilot holes, GPIO opening, and antenna pockets. Render the selected part before exporting it as an STL.
+Open the [OpenSCAD source](Astra-Machina-SL1680.scad) and choose a part in the Customizer. The source includes settings for the board and case dimensions, screw pilot holes, connector and GPIO openings, and antenna pockets. Render the selected part before exporting it as an STL.
 
 The [Synaptics carrier board drawing](https://synaptics-astra.github.io/doc/v/latest/_images/image161.png) was used to locate the mounting points, connectors, and GPIO header.
 

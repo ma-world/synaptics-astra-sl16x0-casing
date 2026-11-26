@@ -15,12 +15,14 @@ bleiben 27,8 mm bis zur Deckelinnenseite frei.
 
 Die Seitenwände sind 2 mm stark, das Deckeldach 2,4 mm. Der Boden ist
 2,6 mm stark und unter den Antennentaschen 2 mm. Die Schraubdome haben
-0,5 mm Abstand zur benachbarten Deckelwand. Boden und Deckel derselben
-Gehäuseversion zusammen verwenden. Die Lochschablone passt weiterhin.
+0,5 mm Abstand zur benachbarten Deckelwand. Beide neuen Deckel passen auf
+bereits gedruckte Böden mit 119,2 mm Breite. Die Lochschablone passt weiterhin.
 
-Die breite Öffnung an der Anschlussseite lässt Spiel für unterschiedliche
-Steckergehäuse. Rechts und hinten gibt es Zugang zu Micro-HDMI, den
-Tastern und zur microSD-Karte. Der Deckel und der Boden sind belüftet.
+Der Deckel wird mit der Außenseite auf der Druckplatte gedruckt. Beim
+Aufsetzen zeigt die breite Öffnung zur großen Anschlussreihe. Sie ist
+über USB-C und HDMI niedriger als über Ethernet und den USB-A-Doppelbuchsen.
+Der microSD-Zugang hinten ist 16,8 mm hoch. Bei großen Steckergehäusen
+die Passform prüfen. Der Deckel und der Boden sind belüftet.
 
 Deckel-GPIO-12mm.stl hat eine 58 × 12 mm große Öffnung über der 40-poligen
 GPIO-Leiste (J32). Die Pins liegen unter der Deckeloberfläche. Bei einem
