@@ -55,3 +55,9 @@ The large opening at the I/O edge accommodates USB, Ethernet, HDMI, and power pl
 Open the [OpenSCAD source](Astra-Machina-SL1680.scad) and choose a part in the Customizer. The source includes settings for the board and case dimensions, screw pilot holes, GPIO opening, and antenna pockets. Render the selected part before exporting it as an STL.
 
 The [Synaptics carrier board drawing](https://synaptics-astra.github.io/doc/v/latest/_images/image161.png) was used to locate the mounting points, connectors, and GPIO header.
+
+## License
+
+The original OpenSCAD design, STL files, documentation, and CAD previews in this repository are licensed under the [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](LICENSE).
+
+You may print, modify, and share the design for noncommercial purposes. When sharing the files or a modified version, credit **ma-world**, include the license text or a [link to the license](https://creativecommons.org/licenses/by-nc/4.0/), and indicate any changes. Commercial use, including selling printed copies, requires separate permission.
