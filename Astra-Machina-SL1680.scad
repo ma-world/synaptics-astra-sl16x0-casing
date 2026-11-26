@@ -5,7 +5,7 @@
 // wurde an einem SL1680-Kit mit der Schablone abgeglichen.
 
 /* [Ausgabe] */
-part = "base"; // [base:Boden, base_antenna:Boden mit Antennentaschen, lid:Deckel, lid_gpio:Deckel mit GPIO-Öffnung, fit:Lochschablone, assembly:Montageansicht]
+part = "base"; // [base:Boden, base_antenna:Boden mit Antennentaschen, base_wifi:Boden mit WLAN-Zugang, wifi_hatch:WLAN-Klappe, lid:Deckel, lid_gpio:Deckel mit GPIO-Öffnung, fit:Lochschablone, assembly:Montageansicht]
 
 /* [Platine] */
 board_width = 100;
@@ -49,6 +49,14 @@ front_usb_ethernet_top = 29.5;
 front_hdmi_power_top = 21.5;
 rear_sd_top = 25;
 
+/* [WLAN-Klappe] */
+// J17 aus der Unterseitenzeichnung, in Platinenkoordinaten gespiegelt.
+wifi_hatch_center_x = 45.5;
+wifi_hatch_center_y = 25.5;
+wifi_hatch_width = 58;
+wifi_hatch_depth = 39;
+wifi_hatch_clearance = 0.25;
+
 /* [Hidden] */
 $fn = 36;
 eps = 0.02;
@@ -76,6 +84,19 @@ lid_post_rear_gap = 0.5;
 lid_holes = [for (x = [-side_clearance / 2, board_width + side_clearance / 2],
                   y = [-rear_clearance + lid_post_diameter / 2 + lid_post_rear_gap,
                        board_depth - 8]) [x, y]];
+
+wifi_x0 = wifi_hatch_center_x - wifi_hatch_width / 2;
+wifi_x1 = wifi_hatch_center_x + wifi_hatch_width / 2;
+wifi_y0 = wifi_hatch_center_y - wifi_hatch_depth / 2;
+wifi_y1 = wifi_hatch_center_y + wifi_hatch_depth / 2;
+wifi_ear = 7.1;
+wifi_ear_half_depth = 5.75;
+wifi_hatch_rectangles = [[wifi_x0, wifi_y0, wifi_x1, wifi_y1],
+    [wifi_x0 - wifi_ear, wifi_hatch_center_y - wifi_ear_half_depth,
+     wifi_x0 + 9, wifi_hatch_center_y + wifi_ear_half_depth],
+    [wifi_x1 - 9, wifi_hatch_center_y - wifi_ear_half_depth,
+     wifi_x1 + wifi_ear, wifi_hatch_center_y + wifi_ear_half_depth]];
+wifi_hatch_screw_x = [wifi_x0 - 1.7, wifi_x1 + 1.7];
 
 module rounded_outline(x0, y0, x1, y1, r) {
     hull() {
@@ -189,12 +210,70 @@ module lid_post(p) {
             max(p.x, side_wall_x) + eps, p.y + 2, rim_height);
 }
 
-module base(with_antennas = false) {
+module wifi_hatch_outline(rect, inset) {
+    offset(delta = -inset)
+        rounded_outline(rect[0], rect[1], rect[2], rect[3], 2);
+}
+
+module wifi_hatch_profile(inset = 0, extra = 0) {
+    // Konische Auflage. Jede der beiden Schraublaschen bleibt mit der
+    // mittleren Fläche verbunden, auch am schmaleren oberen Rand.
+    for (rect = wifi_hatch_rectangles)
+        hull() {
+            translate([0, 0, -extra]) linear_extrude(eps)
+                wifi_hatch_outline(rect, inset);
+            translate([0, 0, floor_thickness + extra - eps]) linear_extrude(eps)
+                wifi_hatch_outline(rect, inset + floor_thickness);
+        }
+}
+
+module wifi_hatch_posts() {
+    for (x = wifi_hatch_screw_x)
+        translate([x, wifi_hatch_center_y, floor_thickness - eps])
+            cylinder(h = 4.2 + eps, d = 8.5);
+}
+
+module wifi_hatch_cuts() {
+    wifi_hatch_profile(extra = eps);
+    for (x = wifi_hatch_screw_x)
+        translate([x, wifi_hatch_center_y, floor_thickness - eps])
+            cylinder(h = 3.8 + eps, d = lid_screw_pilot);
+}
+
+module wifi_hatch() {
+    difference() {
+        wifi_hatch_profile(inset = wifi_hatch_clearance);
+        for (x = wifi_hatch_screw_x) {
+            translate([x, wifi_hatch_center_y, -eps])
+                cylinder(h = floor_thickness + 2 * eps, d = 3.4);
+            translate([x, wifi_hatch_center_y, -eps])
+                cylinder(h = 1.4 + eps, d1 = 6.2, d2 = 3.4);
+        }
+        // Griffmulde an der Vorderkante, mit Abstand zum WLAN-Modul.
+        translate([wifi_hatch_center_x, wifi_y1, -eps])
+            cylinder(h = floor_thickness + 2 * eps, d = 7);
+    }
+}
+
+module floor_vents(with_wifi_hatch) {
+    vent_start = with_wifi_hatch ? 50 : 20;
+    for (y = [vent_start:6:56]) {
+        slot(22, 45, y, -eps, 2.6, floor_thickness + 2 * eps);
+        slot(55, 78, y, -eps, 2.6, floor_thickness + 2 * eps);
+    }
+    if (with_wifi_hatch)
+        for (y = [15:7:43])
+            slot(83, 90, y, -eps, 2.6, floor_thickness + 2 * eps);
+}
+
+module base(with_antennas = false, with_wifi_hatch = false) {
     difference() {
         union() {
             shell(0, rim_height, floor_thickness);
             if (with_antennas)
                 antenna_pocket_rims();
+            if (with_wifi_hatch)
+                wifi_hatch_posts();
             board_standoffs(floor_thickness);
             for (p = lid_holes)
                 lid_post(p);
@@ -202,13 +281,12 @@ module base(with_antennas = false) {
         port_openings();
         if (with_antennas)
             antenna_pocket_cuts();
+        if (with_wifi_hatch)
+            wifi_hatch_cuts();
         board_screw_holes(board_z);
         for (p = lid_holes)
             translate([p.x, p.y, ceiling - 9]) cylinder(h = 9 + eps, d = lid_screw_pilot);
-        for (y = [20:6:56]) {
-            slot(22, 45, y, -eps, 2.6, floor_thickness + 2 * eps);
-            slot(55, 78, y, -eps, 2.6, floor_thickness + 2 * eps);
-        }
+        floor_vents(with_wifi_hatch);
     }
 }
 
@@ -251,8 +329,11 @@ module fit_template() {
     }
 }
 
-if (part == "base" || part == "base_antenna")
-    translate([-x_min, -y_min, 0]) base(with_antennas = part == "base_antenna");
+if (part == "base" || part == "base_antenna" || part == "base_wifi")
+    translate([-x_min, -y_min, 0])
+        base(with_antennas = part != "base", with_wifi_hatch = part == "base_wifi");
+else if (part == "wifi_hatch")
+    translate([-wifi_x0 + wifi_ear, -wifi_y0, 0]) wifi_hatch();
 else if (part == "lid" || part == "lid_gpio")
     // Drehung um die Längsachse, wie beim Aufsetzen des gedruckten Deckels.
     translate([x_max, -y_min, lid_top]) rotate([0, 180, 0]) lid(gpio_open = part == "lid_gpio");

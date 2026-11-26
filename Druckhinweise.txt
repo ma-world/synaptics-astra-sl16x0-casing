@@ -8,8 +8,10 @@ bleiben 27,8 mm bis zur Deckelinnenseite frei.
 1. Lochschablone.stl zuerst drucken und die vier Abstandshalter mit den
    Montagebohrungen an der I/O-Platine abgleichen. Ihr Raster beträgt
    92 × 58 mm. Die Werte sind aus der Platinenzeichnung abgeleitet.
-2. Einen der beiden Böden und einen Deckel in der gelieferten Ausrichtung drucken.
-   Als Startpunkt PETG, 0,2 mm Schichthöhe, 3 Perimeter, ohne Stützen.
+2. Einen Boden und einen Deckel in der gelieferten Ausrichtung drucken.
+   Für Boden-WLAN.stl auch WLAN-Klappe.stl drucken. Als Startpunkt PETG,
+   0,2 mm Schichthöhe, 3 Perimeter. Beim WLAN-Boden im Slicer die kurzen
+   Brücken an den beiden Befestigungen der Wartungsklappe prüfen.
 3. Platine mit 4 × M2,5 × 6 mm und Deckel mit 4 × M3 × 8 mm befestigen.
    Die Schrauben greifen direkt in die gedruckten Pilotbohrungen.
 
@@ -35,6 +37,13 @@ Die Antennen mit dünnem doppelseitigem Klebeband fixieren und die Koaxkabel
 durch die offenen Auslässe zur Mitte führen. Die Kabel an der WLAN-Karte
 anschließen, bevor die I/O-Platine festgeschraubt wird. Beide Deckel passen
 auf diesen Boden. Der WLAN-Empfang in dieser Einbaulage ist noch zu prüfen.
+
+Boden-WLAN.stl hat dieselben Antennentaschen und eine Wartungsöffnung
+von rund 53 × 34 mm. WLAN-Klappe.stl bündig von unten einsetzen, mit
+der Griffmulde zur großen Anschlussreihe. Mit zwei M3 × 6 mm
+Senkschrauben befestigen. Für den Kartenzugang das Gerät stromlos machen,
+die beiden Schrauben lösen und die Klappe an der Mulde anheben. Die
+Montageposition ist aus der Synaptics-Zeichnung abgeleitet.
 
 Das Lochraster wurde am SL1680-Kit mit der Schablone bestätigt.
 Steckerzugang und Bauhöhe mit deinem Kühler vorab abgleichen. Die Maße,

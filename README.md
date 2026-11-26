@@ -1,6 +1,6 @@
 # Synaptics Astra SL16x0 / SL21x0 casing
 
-A 3D printable enclosure for the complete Synaptics Astra Machina development kit, including the I/O carrier and its installed compute module. Choose a standard or antenna mounting base, and a standard or GPIO access lid. Either lid fits either base.
+A 3D printable enclosure for the complete Synaptics Astra Machina development kit, including the I/O carrier and its installed compute module. Choose the standard base, the base with antenna pockets, or the base with antenna pockets and a removable Wi-Fi hatch. Either lid fits all three bases.
 
 ![Exploded CAD view of the standard base and ventilated lid](Vorschau.png)
 
@@ -27,10 +27,12 @@ The mounting hole pattern was checked on an SL1680 kit with the supplied templat
 | [Mounting template](Lochschablone.stl) | Check the four carrier board mounting holes before printing the enclosure. |
 | [Standard base](Boden.stl) | Ventilated base with mounting posts for the carrier board and lid. |
 | [Base with internal antenna pockets](Boden-Antennen-Innen.stl) | Two rectangular pockets alongside the floor vents with open channels for the coax cables. |
+| [Base with Wi-Fi access](Boden-WLAN.stl) | Internal antenna pockets and access to the M.2 card from below. |
+| [Wi-Fi hatch](WLAN-Klappe.stl) | Matching removable cover for the access base. |
 | [Standard lid](Deckel.stl) | Ventilated lid with four mounting holes. |
 | [Lid with GPIO access](Deckel-GPIO-12mm.stl) | Same mounting pattern with an opening over the 40-pin GPIO header (J32). |
 
-Print the template first. Then print one base and one lid in the supplied STL orientation. **PETG, 0.2 mm layers, and three wall loops** are a starting point. The parts are designed to print without supports. The lid's outer face sits on the build plate. Turn the lid over for assembly with the wide I/O edge facing the carrier's main port row.
+Print the template first. Then print one base and one lid in the supplied STL orientation. For the Wi-Fi access base, also print the matching hatch. **PETG, 0.2 mm layers, and three wall loops** are a starting point. Check the short bridges at the two hatch screw mounts in your slicer. The lid's outer face sits on the build plate. Turn the lid over for assembly with the wide I/O edge facing the carrier's main port row.
 
 Use a base and lid for the 119.2 mm wide enclosure. The wider case gives each screw post 0.5 mm of clearance to the adjacent lid wall. An already printed base of this width can be reused with either updated lid. The carrier uses the same 92 × 58 mm mounting pattern, so the supplied template also applies to this revision.
 
@@ -45,6 +47,12 @@ The front opening follows the connector heights. Its upper edge is lower over US
 
 [Printable instructions in English](Printing-Instructions-EN.txt) · [Printable instructions in German](Druckhinweise.txt)
 
+## Wi-Fi service hatch
+
+Fit the hatch into the underside of `Boden-WLAN.stl` with its lift notch toward the main port row. Secure it with **two M3 × 6 mm countersunk screws**. The roughly **53 × 34 mm** opening is positioned around J17 based on the [Synaptics underside drawing](https://synaptics-astra.github.io/doc/v/latest/hw/sl1680.html#locations-of-i-o-board-connectors-on-bottom-side).
+
+To reach the Wi-Fi card, disconnect power, remove the two hatch screws, and lift the hatch at the notch. This exposes the card, retaining screw, and antenna connectors while the I/O board stays mounted. The fit has been checked against the drawing and CAD geometry. The hatch has yet to be fitted to a physical kit.
+
 ## Variant previews
 
 ### Base with internal antenna pockets
@@ -54,6 +62,10 @@ The front opening follows the connector heights. Its upper edge is lower over US
 ### Lid with GPIO access
 
 ![Exploded CAD view of the enclosure with the GPIO access lid](Vorschau-GPIO-12mm.png)
+
+### Wi-Fi access base
+
+![Underside of the base with the Wi-Fi service hatch removed](Vorschau-WLAN-Klappe.png)
 
 ## Edit the design
 

@@ -7,8 +7,10 @@ clearance from the top of the I/O board to the underside of the lid.
 
 1. Print Lochschablone.stl first and check its four standoffs against the
    mounting holes in the I/O board. The hole spacing is 92 × 58 mm.
-2. Print either base and one lid in the orientation supplied. Suggested
-   starting settings are PETG, 0.2 mm layers, 3 walls, and no supports.
+2. Print a base and one lid in the supplied orientation. For Boden-WLAN.stl,
+   print WLAN-Klappe.stl as well. Suggested starting settings are PETG,
+   0.2 mm layers, and 3 walls. For the Wi-Fi access base, check the short
+   bridges at the two hatch screw mounts in your slicer.
 3. Secure the I/O board with four M2.5 × 6 mm screws. Fit the lid with
    four M3 × 8 mm screws. Both sets of screws thread into printed pilot holes.
 
@@ -24,6 +26,12 @@ antenna pockets alongside the floor vents. Each pocket is 52 × 12 mm and
 route the coax cables through the open slots toward the centre. Connect
 them to the Wi-Fi card before fastening the I/O board. Both lids fit this
 base. Wi-Fi reception in this antenna position has yet to be checked.
+
+Boden-WLAN.stl retains the antenna pockets and adds an access opening of
+roughly 53 × 34 mm. Fit WLAN-Klappe.stl from below with its lift notch
+toward the main port row. Fasten it with two M3 × 6 mm countersunk screws.
+For service, disconnect power, remove the two screws, and lift the hatch
+at the notch. The opening position is based on the Synaptics drawing.
 
 Deckel.stl is the standard lid. Deckel-GPIO-12mm.stl has a 63.8 × 12 mm opening
 above the 40-pin GPIO header (J32). The pins sit below the lid surface. If
