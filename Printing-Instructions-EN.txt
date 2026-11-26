@@ -1,0 +1,35 @@
+Astra Machina SL1680 | Enclosure for the complete development kit
+
+The assembled enclosure measures 115 × 88 × 41.4 mm. It fits the
+100 × 79 mm SL16X0 I/O board and SL1680 core module. The printed base
+replaces the stock carrier frame if one is fitted. There is 27.8 mm of
+clearance from the top of the I/O board to the underside of the lid.
+
+1. Print Lochschablone.stl first and check its four standoffs against the
+   mounting holes in the I/O board. The hole spacing is 92 × 58 mm.
+2. Print either base and one lid in the orientation supplied. Suggested
+   starting settings are PETG, 0.2 mm layers, 3 walls, and no supports.
+3. Secure the I/O board with four M2.5 × 6 mm screws. Fit the lid with
+   four M3 × 8 mm screws. Both sets of screws thread into printed pilot holes.
+
+Boden.stl is the standard base. Boden-Antennen-Innen.stl has two rectangular
+antenna pockets alongside the floor vents. Each pocket is 52 × 12 mm and
+3.5 mm deep. Hold the antennas in place with thin double-sided tape and
+route the coax cables through the open slots toward the centre. Connect
+them to the Wi-Fi card before fastening the I/O board. Both lids fit this
+base. Wi-Fi reception in this antenna position has yet to be checked.
+
+Deckel.stl is the standard lid. Deckel-GPIO-12mm.stl has a 58 × 12 mm opening
+above the 40-pin GPIO header (J32). The pins sit below the lid surface. If
+needed, feed the cable through the opening and plug it in before fastening
+the lid. The case also provides access to Micro-HDMI, microSD, and the buttons.
+
+The mounting hole spacing has been checked on an SL1680 kit using the
+template. Check access for your plugs and clearance above your heatsink.
+You can adjust the dimensions, pilot holes, GPIO opening, and antenna
+pockets in the OpenSCAD source.
+
+Sources
+https://synaptics-astra.github.io/doc/v/latest/hw/sl1680.html
+https://synaptics-astra.github.io/doc/v/latest/_images/image161.png
+https://cp.synaptics.com/cognidox/download/NR-160458-MS-APPROVED.pdf#page=6

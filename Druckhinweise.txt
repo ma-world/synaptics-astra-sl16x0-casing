@@ -1,0 +1,39 @@
+Astra Machina SL1680 | Gehäuse für das komplette Dev-Kit
+
+115 × 88 × 41,4 mm außen. Der Entwurf nimmt die 100 × 79 mm große
+SL16X0-I/O-Platine samt SL1680-Core-Modul auf. Der gedruckte Boden ersetzt
+gegebenenfalls den serienmäßigen Trägerrahmen. Über der I/O-Platine
+bleiben 27,8 mm bis zur Deckelinnenseite frei.
+
+1. Lochschablone.stl zuerst drucken und die vier Abstandshalter mit den
+   Montagebohrungen an der I/O-Platine abgleichen. Ihr Raster beträgt
+   92 × 58 mm. Die Werte sind aus der Platinenzeichnung abgeleitet.
+2. Einen der beiden Böden und einen Deckel in der gelieferten Ausrichtung drucken.
+   Als Startpunkt PETG, 0,2 mm Schichthöhe, 3 Perimeter, ohne Stützen.
+3. Platine mit 4 × M2,5 × 6 mm und Deckel mit 4 × M3 × 8 mm befestigen.
+   Die Schrauben greifen direkt in die gedruckten Pilotbohrungen.
+
+Die breite Öffnung an der Anschlussseite lässt Spiel für unterschiedliche
+Steckergehäuse. Rechts und hinten gibt es Zugang zu Micro-HDMI, den
+Tastern und zur microSD-Karte. Der Deckel und der Boden sind belüftet.
+
+Deckel-GPIO-12mm.stl hat eine 58 × 12 mm große Öffnung über der 40-poligen
+GPIO-Leiste (J32). Die Pins liegen unter der Deckeloberfläche. Bei einem
+tief sitzenden Stecker kannst du das Kabel durch die Öffnung führen und
+aufstecken, bevor du den Deckel festschraubst.
+
+Boden-Antennen-Innen.stl hat zwei rechteckige Taschen im Boden, links und
+rechts neben den Lüftungsschlitzen. Jede ist 52 × 12 mm groß und 3,5 mm tief.
+Die Antennen mit dünnem doppelseitigem Klebeband fixieren und die Koaxkabel
+durch die offenen Auslässe zur Mitte führen. Die Kabel an der WLAN-Karte
+anschließen, bevor die I/O-Platine festgeschraubt wird. Beide Deckel passen
+auf diesen Boden. Der WLAN-Empfang in dieser Einbaulage ist noch zu prüfen.
+
+Das Lochraster wurde am SL1680-Kit mit der Schablone bestätigt.
+Steckerzugang und Bauhöhe mit deinem Kühler vorab abgleichen. Die Maße,
+Schraubenbohrungen, GPIO-Öffnung und Antennentaschen sind in OpenSCAD einstellbar.
+
+Quellen
+https://synaptics-astra.github.io/doc/v/latest/hw/sl1680.html
+https://synaptics-astra.github.io/doc/v/latest/_images/image161.png
+https://cp.synaptics.com/cognidox/download/NR-160458-MS-APPROVED.pdf#page=6
