@@ -1,6 +1,6 @@
 Astra Machina SL1680 | Enclosure for the complete development kit
 
-The assembled enclosure measures 115 × 88 × 41.4 mm. It fits the
+The assembled enclosure measures 119.2 × 88 × 41.4 mm. It fits the
 100 × 79 mm SL16X0 I/O board and SL1680 core module. The printed base
 replaces the stock carrier frame if one is fitted. There is 27.8 mm of
 clearance from the top of the I/O board to the underside of the lid.
@@ -12,10 +12,10 @@ clearance from the top of the I/O board to the underside of the lid.
 3. Secure the I/O board with four M2.5 × 6 mm screws. Fit the lid with
    four M3 × 8 mm screws. Both sets of screws thread into printed pilot holes.
 
-Both lid files include four recesses for the base posts. They leave
-approximately 0.4 mm of wall at the thinnest points. Check that your
-slicer retains a continuous wall there. If an earlier print will not sit
-flush, reprint the lid and reuse the base.
+The side walls are 2 mm thick and the lid top is 2.4 mm thick. The base
+floor is 2.6 mm thick and 2 mm thick under the antenna pockets. The
+screw posts sit 0.5 mm from the adjacent lid wall. Use a base and lid from
+the same enclosure revision. The existing mounting template still fits.
 
 Boden.stl is the standard base. Boden-Antennen-Innen.stl has two rectangular
 antenna pockets alongside the floor vents. Each pocket is 52 × 12 mm and

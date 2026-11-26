@@ -21,10 +21,10 @@ board_screw_pilot = 2.15; // M2,5 direkt in Kunststoff
 
 /* [Gehäuse] */
 space_above_pcb = 27.8;
-side_clearance = 5.1;
-rear_clearance = 2.6;
-front_clearance = 1.6;
-wall = 2.4;
+side_clearance = 7.6;
+rear_clearance = 3;
+front_clearance = 2;
+wall = 2;
 floor_thickness = 2.6;
 lid_thickness = 2.4;
 lid_screw_pilot = 2.65; // M3 direkt in Kunststoff
@@ -56,8 +56,8 @@ x_max = board_width + side_clearance + wall;
 y_min = -rear_clearance - wall;
 y_max = board_depth + front_clearance + wall;
 
-antenna_lip = 1.8;
-antenna_floor_z = floor_thickness - 0.8;
+antenna_lip = 2;
+antenna_floor_z = max(wall, floor_thickness - 0.8);
 antenna_top = antenna_floor_z + antenna_pocket_depth;
 antenna_pocket_y = (board_hole_rear + board_hole_front - antenna_pocket_length) / 2;
 antenna_pockets_x = [x_min + wall, x_max - wall - antenna_pocket_width];
@@ -65,9 +65,10 @@ antenna_pockets_x = [x_min + wall, x_max - wall - antenna_pocket_width];
 board_holes = [for (x = [board_hole_left, board_hole_right],
                     y = [board_hole_rear, board_hole_front]) [x, y]];
 lid_post_diameter = 6.6;
-lid_post_radial_clearance = 0.2;
-lid_holes = [for (x = [x_min + 3.9, x_max - 3.9],
-                  y = [y_min + 4, board_depth - 8]) [x, y]];
+lid_post_rear_gap = 0.5;
+lid_holes = [for (x = [-side_clearance / 2, board_width + side_clearance / 2],
+                  y = [-rear_clearance + lid_post_diameter / 2 + lid_post_rear_gap,
+                       board_depth - 8]) [x, y]];
 
 module rounded_outline(x0, y0, x1, y1, r) {
     hull() {
@@ -76,25 +77,25 @@ module rounded_outline(x0, y0, x1, y1, r) {
     }
 }
 
+module case_outline() {
+    rounded_outline(x_min, y_min, x_max, y_max, corner_radius);
+}
+
 module shell(bottom, top, inner_bottom) {
     difference() {
-        translate([0, 0, bottom]) linear_extrude(top - bottom)
-            rounded_outline(x_min, y_min, x_max, y_max, corner_radius);
+        translate([0, 0, bottom]) linear_extrude(top - bottom) case_outline();
         translate([0, 0, inner_bottom]) linear_extrude(top - bottom + 2 * eps)
-            rounded_outline(x_min + wall, y_min + wall, x_max - wall,
-                            y_max - wall, max(0.4, corner_radius - wall));
+            offset(delta = -wall) case_outline();
     }
 }
 
 module upright_lid_shell() {
     // Deckel in Montageposition. Die Innenaussparung beginnt an der Fuge.
     difference() {
-        translate([0, 0, rim_height]) linear_extrude(lid_top - rim_height)
-            rounded_outline(x_min, y_min, x_max, y_max, corner_radius);
+        translate([0, 0, rim_height]) linear_extrude(lid_top - rim_height) case_outline();
         translate([0, 0, rim_height - eps])
             linear_extrude(ceiling - rim_height + eps)
-                rounded_outline(x_min + wall, y_min + wall, x_max - wall,
-                                y_max - wall, max(0.4, corner_radius - wall));
+                offset(delta = -wall) case_outline();
     }
 }
 
@@ -152,6 +153,17 @@ module antenna_pocket_cuts() {
     }
 }
 
+module lid_post(p) {
+    start_z = floor_thickness - eps;
+    translate([p.x, p.y, start_z])
+        cylinder(h = ceiling - start_z, d = lid_post_diameter);
+
+    // Die Verstärkung verbindet den Dom unterhalb der Deckelfuge mit der Wand.
+    side_wall_x = p.x < 0 ? x_min + wall : x_max - wall;
+    opening(min(p.x, side_wall_x) - eps, p.y - 2, start_z,
+            max(p.x, side_wall_x) + eps, p.y + 2, rim_height);
+}
+
 module base(with_antennas = false) {
     difference() {
         union() {
@@ -160,8 +172,7 @@ module base(with_antennas = false) {
                 antenna_pocket_rims();
             board_standoffs(floor_thickness);
             for (p = lid_holes)
-                translate([p.x, p.y, floor_thickness - eps])
-                    cylinder(h = ceiling - floor_thickness + eps, d = lid_post_diameter);
+                lid_post(p);
         }
         port_openings();
         if (with_antennas)
@@ -181,14 +192,8 @@ module lid(gpio_open = false) {
     difference() {
         upright_lid_shell();
         port_openings();
-        for (p = lid_holes) {
-            // Der Boden-Dom ragt in die 2,4-mm-Deckelwand. Die Freistellung
-            // endet an der Dachunterseite, auf der der Dom aufliegt.
-            translate([p.x, p.y, rim_height - eps])
-                cylinder(h = ceiling - rim_height + eps,
-                         d = lid_post_diameter + 2 * lid_post_radial_clearance);
+        for (p = lid_holes)
             translate([p.x, p.y, ceiling - eps]) cylinder(h = lid_thickness + 2 * eps, d = 3.4);
-        }
         if (gpio_open)
             translate([0, 0, ceiling - eps]) linear_extrude(lid_thickness + 2 * eps)
                 rounded_outline(gpio_opening_x, gpio_opening_y,
