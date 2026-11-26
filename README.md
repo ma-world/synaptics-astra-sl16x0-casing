@@ -17,7 +17,7 @@ The mounting hole pattern was checked on an SL1680 kit with the supplied templat
 | Base floor / floor under antenna pockets | 2.6 mm / 2.0 mm |
 | Clearance from the top of the I/O board to the underside of the lid | 27.8 mm |
 | Each internal antenna pocket | 52 × 12 × 3.5 mm |
-| GPIO lid opening | 58 × 12 mm |
+| GPIO lid opening | 63.8 × 12 mm |
 | Rear microSD opening | 74 × 16.8 mm |
 
 ## Print files

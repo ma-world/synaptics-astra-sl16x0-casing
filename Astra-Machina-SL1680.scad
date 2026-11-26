@@ -35,7 +35,7 @@ lid_screw_pilot = 2.65; // M3 direkt in Kunststoff
 gpio_opening_x = -2;
 gpio_opening_y = 4;
 gpio_opening_width = 12;
-gpio_opening_length = 58;
+gpio_opening_length = 63.8;
 
 /* [Antennentaschen] */
 antenna_pocket_length = 52;

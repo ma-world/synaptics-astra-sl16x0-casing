@@ -24,7 +24,7 @@ Aufsetzen zeigt die breite Öffnung zur großen Anschlussreihe. Sie ist
 Der microSD-Zugang hinten ist 16,8 mm hoch. Bei großen Steckergehäusen
 die Passform prüfen. Der Deckel und der Boden sind belüftet.
 
-Deckel-GPIO-12mm.stl hat eine 58 × 12 mm große Öffnung über der 40-poligen
+Deckel-GPIO-12mm.stl hat eine 63,8 × 12 mm große Öffnung über der 40-poligen
 GPIO-Leiste (J32). Die Pins liegen unter der Deckeloberfläche. Bei einem
 tief sitzenden Stecker kannst du das Kabel durch die Öffnung führen und
 aufstecken, bevor du den Deckel festschraubst.

@@ -25,7 +25,7 @@ route the coax cables through the open slots toward the centre. Connect
 them to the Wi-Fi card before fastening the I/O board. Both lids fit this
 base. Wi-Fi reception in this antenna position has yet to be checked.
 
-Deckel.stl is the standard lid. Deckel-GPIO-12mm.stl has a 58 × 12 mm opening
+Deckel.stl is the standard lid. Deckel-GPIO-12mm.stl has a 63.8 × 12 mm opening
 above the 40-pin GPIO header (J32). The pins sit below the lid surface. If
 needed, feed the cable through the opening and plug it in before fastening
 the lid. Print the lid with its outer face on the build plate. When fitting
