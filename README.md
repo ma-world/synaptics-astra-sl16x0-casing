@@ -1,4 +1,4 @@
-# Synaptics Astra SL16x0 casing
+# Synaptics Astra SL16x0 / SL21x0 casing
 
 A 3D printable enclosure for the complete Synaptics Astra Machina development kit, including the I/O carrier and its installed compute module. Choose a standard or antenna mounting base, and a standard or GPIO access lid. Either lid fits either base.
 
