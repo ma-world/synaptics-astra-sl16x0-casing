@@ -64,6 +64,8 @@ antenna_pockets_x = [x_min + wall, x_max - wall - antenna_pocket_width];
 
 board_holes = [for (x = [board_hole_left, board_hole_right],
                     y = [board_hole_rear, board_hole_front]) [x, y]];
+lid_post_diameter = 6.6;
+lid_post_radial_clearance = 0.2;
 lid_holes = [for (x = [x_min + 3.9, x_max - 3.9],
                   y = [y_min + 4, board_depth - 8]) [x, y]];
 
@@ -159,7 +161,7 @@ module base(with_antennas = false) {
             board_standoffs(floor_thickness);
             for (p = lid_holes)
                 translate([p.x, p.y, floor_thickness - eps])
-                    cylinder(h = ceiling - floor_thickness + eps, d = 6.6);
+                    cylinder(h = ceiling - floor_thickness + eps, d = lid_post_diameter);
         }
         port_openings();
         if (with_antennas)
@@ -179,8 +181,14 @@ module lid(gpio_open = false) {
     difference() {
         upright_lid_shell();
         port_openings();
-        for (p = lid_holes)
+        for (p = lid_holes) {
+            // Der Boden-Dom ragt in die 2,4-mm-Deckelwand. Die Freistellung
+            // endet an der Dachunterseite, auf der der Dom aufliegt.
+            translate([p.x, p.y, rim_height - eps])
+                cylinder(h = ceiling - rim_height + eps,
+                         d = lid_post_diameter + 2 * lid_post_radial_clearance);
             translate([p.x, p.y, ceiling - eps]) cylinder(h = lid_thickness + 2 * eps, d = 3.4);
+        }
         if (gpio_open)
             translate([0, 0, ceiling - eps]) linear_extrude(lid_thickness + 2 * eps)
                 rounded_outline(gpio_opening_x, gpio_opening_y,

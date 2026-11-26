@@ -13,6 +13,11 @@ bleiben 27,8 mm bis zur Deckelinnenseite frei.
 3. Platine mit 4 × M2,5 × 6 mm und Deckel mit 4 × M3 × 8 mm befestigen.
    Die Schrauben greifen direkt in die gedruckten Pilotbohrungen.
 
+Beide Deckel haben innen vier Freistellungen für die Schraubdome. An den
+dünnsten Stellen bleiben etwa 0,4 mm Wandstärke. Im Slicer prüfen, ob dort
+eine durchgehende Wandlinie entsteht. Wenn ein älterer Deckel nicht bündig
+aufliegt, reicht es, den Deckel neu zu drucken. Der Boden passt weiterhin.
+
 Die breite Öffnung an der Anschlussseite lässt Spiel für unterschiedliche
 Steckergehäuse. Rechts und hinten gibt es Zugang zu Micro-HDMI, den
 Tastern und zur microSD-Karte. Der Deckel und der Boden sind belüftet.

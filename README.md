@@ -29,6 +29,8 @@ The mounting hole pattern was checked on an SL1680 kit with the supplied templat
 
 Print the template first. Then print one base and one lid in the supplied STL orientation. **PETG, 0.2 mm layers, and three wall loops** are a starting point. The parts are designed to print without supports. The lid's outer face sits on the build plate.
 
+The current lid files have four recesses in the inner walls so the base posts can reach the underside of the lid. The recesses provide 0.2 mm of radial clearance and leave approximately 0.4 mm of wall at the thinnest points. Check that your slicer shows a continuous wall there. If you printed an earlier copy and it will not sit flush, reprint the lid and reuse the base.
+
 ## Assembly
 
 1. Remove the stock carrier frame if your kit has one.

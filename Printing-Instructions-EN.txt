@@ -12,6 +12,11 @@ clearance from the top of the I/O board to the underside of the lid.
 3. Secure the I/O board with four M2.5 × 6 mm screws. Fit the lid with
    four M3 × 8 mm screws. Both sets of screws thread into printed pilot holes.
 
+Both lid files include four recesses for the base posts. They leave
+approximately 0.4 mm of wall at the thinnest points. Check that your
+slicer retains a continuous wall there. If an earlier print will not sit
+flush, reprint the lid and reuse the base.
+
 Boden.stl is the standard base. Boden-Antennen-Innen.stl has two rectangular
 antenna pockets alongside the floor vents. Each pocket is 52 × 12 mm and
 3.5 mm deep. Hold the antennas in place with thin double-sided tape and
