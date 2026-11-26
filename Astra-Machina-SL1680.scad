@@ -257,13 +257,15 @@ module wifi_hatch() {
 
 module floor_vents(with_wifi_hatch) {
     vent_start = with_wifi_hatch ? 50 : 20;
+    extension = with_wifi_hatch ? 12 : 0;
+    right_edge = 78 + extension;
     for (y = [vent_start:6:56]) {
-        slot(22, 45, y, -eps, 2.6, floor_thickness + 2 * eps);
-        slot(55, 78, y, -eps, 2.6, floor_thickness + 2 * eps);
+        slot(22 - extension, 45, y, -eps, 2.6, floor_thickness + 2 * eps);
+        slot(55, right_edge, y, -eps, 2.6, floor_thickness + 2 * eps);
     }
     if (with_wifi_hatch)
         for (y = [15:7:43])
-            slot(83, 90, y, -eps, 2.6, floor_thickness + 2 * eps);
+            slot(83, right_edge, y, -eps, 2.6, floor_thickness + 2 * eps);
 }
 
 module base(with_antennas = false, with_wifi_hatch = false) {
