@@ -5,7 +5,7 @@
 // wurde an einem SL1680-Kit mit der Schablone abgeglichen.
 
 /* [Ausgabe] */
-part = "base"; // [base:Boden, base_antenna:Boden mit Antennentaschen, base_wifi:Boden mit WLAN-Zugang, wifi_hatch:WLAN-Klappe, lid:Deckel, lid_gpio:Deckel mit GPIO-Öffnung, fit:Lochschablone, assembly:Montageansicht]
+part = "base"; // [base:Boden, base_antenna:Boden mit Antennentaschen, base_wifi:Boden mit WLAN-Zugang, wifi_hatch:WLAN-Klappe, lid:Deckel, lid_gpio:Deckel mit GPIO-Öffnung, lid_camera_closed:Deckel mit geschlossener Kameraseite, lid_gpio_camera_closed:GPIO-Deckel mit geschlossener Kameraseite, fit:Lochschablone, assembly:Montageansicht]
 
 /* [Platine] */
 board_width = 100;
@@ -150,12 +150,13 @@ module front_port_opening() {
                      [-2, front_otg_top]]);
 }
 
-module port_openings() {
+module port_openings(camera_side_open = true) {
     front_port_opening();
     // Hinten: microSD und Platz zum Greifen unter das Core-Modul.
     opening(13, y_min - eps, 8.2, board_width - 13, 0.2, rear_sd_top);
     // Rechts: Micro-HDMI-Eingang, MIPI-CSI und Zugang zu den Tastern.
-    opening(board_width - 0.2, 3.0, 8.2, x_max + eps, board_depth - 12.5, 30);
+    if (camera_side_open)
+        opening(board_width - 0.2, 3.0, 8.2, x_max + eps, board_depth - 12.5, 30);
 }
 
 module slot(x0, x1, y, z, width, depth) {
@@ -292,11 +293,11 @@ module base(with_antennas = false, with_wifi_hatch = false) {
     }
 }
 
-module lid(gpio_open = false) {
+module lid(gpio_open = false, camera_side_open = true) {
     left_vent_start = gpio_open ? max(13, gpio_opening_x + gpio_opening_width + 3) : 13;
     difference() {
         upright_lid_shell();
-        port_openings();
+        port_openings(camera_side_open = camera_side_open);
         for (p = lid_holes)
             translate([p.x, p.y, ceiling - eps]) cylinder(h = lid_thickness + 2 * eps, d = 3.4);
         if (gpio_open)
@@ -336,9 +337,12 @@ if (part == "base" || part == "base_antenna" || part == "base_wifi")
         base(with_antennas = part != "base", with_wifi_hatch = part == "base_wifi");
 else if (part == "wifi_hatch")
     translate([-wifi_x0 + wifi_ear, -wifi_y0, 0]) wifi_hatch();
-else if (part == "lid" || part == "lid_gpio")
+else if (part == "lid" || part == "lid_gpio" ||
+         part == "lid_camera_closed" || part == "lid_gpio_camera_closed")
     // Drehung um die Längsachse, wie beim Aufsetzen des gedruckten Deckels.
-    translate([x_max, -y_min, lid_top]) rotate([0, 180, 0]) lid(gpio_open = part == "lid_gpio");
+    translate([x_max, -y_min, lid_top]) rotate([0, 180, 0])
+        lid(gpio_open = part == "lid_gpio" || part == "lid_gpio_camera_closed",
+            camera_side_open = part == "lid" || part == "lid_gpio");
 else if (part == "fit")
     fit_template();
 else if (part == "assembly") {

@@ -1,6 +1,6 @@
 # Synaptics Astra SL16x0 / SL21x0 casing
 
-A 3D printable enclosure for the complete Synaptics Astra Machina development kit, including the I/O carrier and its installed compute module. Choose the standard base, the base with antenna pockets, or the base with antenna pockets and a removable Wi-Fi hatch. Either lid fits all three bases.
+A 3D printable enclosure for the complete Synaptics Astra Machina development kit, including the I/O carrier and its installed compute module. Choose the standard base, the base with antenna pockets, or the base with antenna pockets and a removable Wi-Fi hatch. All four lids fit all three bases.
 
 ![Exploded CAD view of the standard base and ventilated lid](Vorschau.png)
 
@@ -31,10 +31,12 @@ The mounting hole pattern was checked on an SL1680 kit with the supplied templat
 | [Wi-Fi hatch](WLAN-Klappe.stl) | Matching removable cover for the access base. |
 | [Standard lid](Deckel.stl) | Ventilated lid with four mounting holes. |
 | [Lid with GPIO access](Deckel-GPIO-12mm.stl) | Same mounting pattern with an opening over the 40-pin GPIO header (J32). |
+| [Standard lid with closed camera side](Deckel-Kameraseite-Zu.stl) | Solid wall above the ribbon cable opening in the base. |
+| [GPIO lid with closed camera side](Deckel-GPIO-12mm-Kameraseite-Zu.stl) | GPIO access and a solid wall above the ribbon cable opening in the base. |
 
 Print the template first. Then print one base and one lid in the supplied STL orientation. For the Wi-Fi access base, also print the matching hatch. **PETG, 0.2 mm layers, and three wall loops** are a starting point. Check the short bridges at the two hatch screw mounts in your slicer. The lid's outer face sits on the build plate. Turn the lid over for assembly with the wide I/O edge facing the carrier's main port row.
 
-Use a base and lid for the 119.2 mm wide enclosure. The wider case gives each screw post 0.5 mm of clearance to the adjacent lid wall. An already printed base of this width can be reused with either updated lid. The carrier uses the same 92 × 58 mm mounting pattern, so the supplied template also applies to this revision.
+Use a base and lid for the 119.2 mm wide enclosure. The wider case gives each screw post 0.5 mm of clearance to the adjacent lid wall. An already printed base of this width can be reused with any lid variant. The carrier uses the same 92 × 58 mm mounting pattern, so the supplied template also applies to this revision.
 
 ## Assembly
 
@@ -46,6 +48,8 @@ Use a base and lid for the 119.2 mm wide enclosure. The wider case gives each sc
 The front opening follows the connector heights. Its upper edge is lower over USB-C and HDMI, with a taller section for Ethernet and the stacked USB-A ports. Side and rear openings provide access to features such as Micro-HDMI, microSD, and buttons where present on the kit. Check clearance for oversized plug housings. Wi-Fi reception with the antennas mounted in the internal pockets has yet to be checked on the kit.
 
 [Printable instructions in English](Printing-Instructions-EN.txt) · [Printable instructions in German](Druckhinweise.txt)
+
+With a closed camera-side lid, route the camera ribbon cable through the **5.8 mm high opening in the base** before fastening the lid. Choose an open camera-side lid if you need room for a side-facing plug or direct access to the side connectors.
 
 ## Wi-Fi service hatch
 
@@ -62,6 +66,10 @@ To reach the Wi-Fi card, disconnect power, remove the two hatch screws, and lift
 ### Lid with GPIO access
 
 ![Exploded CAD view of the enclosure with the GPIO access lid](Vorschau-GPIO-12mm.png)
+
+### Lid with closed camera side
+
+![Assembled GPIO lid with a solid camera-side wall and a ribbon cable opening below it](Vorschau-Kameraseite-Zu.png)
 
 ### Wi-Fi access base
 

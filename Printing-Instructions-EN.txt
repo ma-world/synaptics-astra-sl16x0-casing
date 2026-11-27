@@ -17,15 +17,15 @@ clearance from the top of the I/O board to the underside of the lid.
 The side walls are 2 mm thick and the lid top is 2.4 mm thick. The base
 floor is 2.6 mm thick and 2 mm thick under the antenna pockets. The
 screw posts sit 0.5 mm from the adjacent lid wall. An already printed
-119.2 mm wide base can be reused with either updated lid. The existing
+119.2 mm wide base can be reused with any lid variant. The existing
 mounting template still fits.
 
 Boden.stl is the standard base. Boden-Antennen-Innen.stl has two rectangular
 antenna pockets alongside the floor vents. Each pocket is 52 × 12 mm and
 3.5 mm deep. Hold the antennas in place with thin double-sided tape and
 route the coax cables through the open slots toward the centre. Connect
-them to the Wi-Fi card before fastening the I/O board. Both lids fit this
-base. Wi-Fi reception in this antenna position has yet to be checked.
+them to the Wi-Fi card before fastening the I/O board. All lid variants fit
+this base. Wi-Fi reception in this antenna position has yet to be checked.
 
 Boden-WLAN.stl retains the antenna pockets and adds an access opening of
 roughly 53 × 34 mm. Fit WLAN-Klappe.stl from below with its lift notch
@@ -40,6 +40,10 @@ the lid. Print the lid with its outer face on the build plate. When fitting
 it, align the wide front opening with the carrier's main port row. The
 opening is lower over USB-C and HDMI than over Ethernet and the stacked
 USB-A ports. The rear microSD opening is 16.8 mm high.
+
+Deckel-Kameraseite-Zu.stl and Deckel-GPIO-12mm-Kameraseite-Zu.stl close
+the camera-side wall of the lid. Route the ribbon cable through the
+5.8 mm high opening in the base before fastening the lid.
 
 The mounting hole spacing has been checked on an SL1680 kit using the
 template. Check access for your plugs and clearance above your heatsink.

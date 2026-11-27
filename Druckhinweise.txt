@@ -17,7 +17,7 @@ bleiben 27,8 mm bis zur Deckelinnenseite frei.
 
 Die Seitenwände sind 2 mm stark, das Deckeldach 2,4 mm. Der Boden ist
 2,6 mm stark und unter den Antennentaschen 2 mm. Die Schraubdome haben
-0,5 mm Abstand zur benachbarten Deckelwand. Beide neuen Deckel passen auf
+0,5 mm Abstand zur benachbarten Deckelwand. Alle Deckelvarianten passen auf
 bereits gedruckte Böden mit 119,2 mm Breite. Die Lochschablone passt weiterhin.
 
 Der Deckel wird mit der Außenseite auf der Druckplatte gedruckt. Beim
@@ -31,11 +31,15 @@ GPIO-Leiste (J32). Die Pins liegen unter der Deckeloberfläche. Bei einem
 tief sitzenden Stecker kannst du das Kabel durch die Öffnung führen und
 aufstecken, bevor du den Deckel festschraubst.
 
+Deckel-Kameraseite-Zu.stl und Deckel-GPIO-12mm-Kameraseite-Zu.stl haben
+eine geschlossene Kameraseite am Oberdeckel. Das Kamera-Flachbandkabel
+vor dem Festschrauben durch die 5,8 mm hohe Aussparung im Boden führen.
+
 Boden-Antennen-Innen.stl hat zwei rechteckige Taschen im Boden, links und
 rechts neben den Lüftungsschlitzen. Jede ist 52 × 12 mm groß und 3,5 mm tief.
 Die Antennen mit dünnem doppelseitigem Klebeband fixieren und die Koaxkabel
 durch die offenen Auslässe zur Mitte führen. Die Kabel an der WLAN-Karte
-anschließen, bevor die I/O-Platine festgeschraubt wird. Beide Deckel passen
+anschließen, bevor die I/O-Platine festgeschraubt wird. Alle Deckelvarianten passen
 auf diesen Boden. Der WLAN-Empfang in dieser Einbaulage ist noch zu prüfen.
 
 Boden-WLAN.stl hat dieselben Antennentaschen und eine Wartungsöffnung
